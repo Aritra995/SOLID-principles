@@ -27,6 +27,7 @@ public abstract class Employee {
                 this.lastName +
                 "@globomanticshr.com";
     }
+    public abstract void requestTimeOff(int nbDays, Employee manager);
 
     @Override
     public String toString() {
