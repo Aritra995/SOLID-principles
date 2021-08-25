@@ -16,12 +16,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-/*
-Helper method to perform CRUD operations on employees. In a production
-application we could use the database for persistence. In this demo,
-we are storing employees in the file system.
- */
-
 public class EmployeeRepository implements EmployeeFileRepository {
     private EmployeeFileSerializer serializer;
     public EmployeeRepository(EmployeeFileSerializer serializer){
@@ -35,10 +29,8 @@ public class EmployeeRepository implements EmployeeFileRepository {
                 .getPath();
 
         try (Scanner scanner = new Scanner(new File(path))) {
-            // SKip header
+            
             scanner.nextLine();
-
-            // Process content
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 Employee employee = createEmployeeFromCsvRecord(line);
@@ -50,7 +42,7 @@ public class EmployeeRepository implements EmployeeFileRepository {
         }
 
         return employees;
-        /*// Employees are kept in memory for simplicity
+        /*
         Employee anna = new FullTimeEmployee("Anna Smith", 2000);
         Employee billy = new FullTimeEmployee("Billy Leech", 920);
 
